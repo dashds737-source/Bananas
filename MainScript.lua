@@ -727,3 +727,6 @@ SwitchTab("Potions")
 Status.Text = "BANANAS Ready"
 
 print("BANANAS Loaded")
+print("BANANAS")
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dashds737-source/Bananas/main/AutoDetection.lua"))()
