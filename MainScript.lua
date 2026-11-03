@@ -609,3 +609,58 @@ task.spawn(function()
         end
     end
 end)
+
+--==================================================
+-- BANANAS V5 | SET DIG & SET SHAKE
+--==================================================
+
+local DigPosition = nil
+local ShakePosition = nil
+
+local SetDigButton = Button(
+    Main,
+    "SET DIG",
+    UDim2.fromOffset(10, 315),
+    UDim2.fromOffset(125, 28),
+    Color3.fromRGB(0, 105, 175)
+)
+
+local SetShakeButton = Button(
+    Main,
+    "SET SHAKE",
+    UDim2.fromOffset(150, 315),
+    UDim2.fromOffset(125, 28),
+    Color3.fromRGB(105, 75, 180)
+)
+
+SetDigButton.MouseButton1Click:Connect(function()
+    local Character = Player.Character
+    local Root = Character and Character:FindFirstChild("HumanoidRootPart")
+
+    if not Root then
+        Status.Text = "Character not found"
+        return
+    end
+
+    DigPosition = Root.Position
+
+    Status.Text = "Dig position saved!"
+
+    print("BANANAS V5 | Dig Position:", DigPosition)
+end)
+
+SetShakeButton.MouseButton1Click:Connect(function()
+    local Character = Player.Character
+    local Root = Character and Character:FindFirstChild("HumanoidRootPart")
+
+    if not Root then
+        Status.Text = "Character not found"
+        return
+    end
+
+    ShakePosition = Root.Position
+
+    Status.Text = "Shake position saved!"
+
+    print("BANANAS V5 | Shake Position:", ShakePosition)
+end)
