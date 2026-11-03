@@ -574,3 +574,38 @@ task.spawn(function()
         end
     end
 end)
+-- BANANAS V5 | QUALITY DETECTOR
+
+local QualityLabel = PlayerGui
+    :WaitForChild("ToolUI")
+    :WaitForChild("FillingPan")
+    :WaitForChild("Quality")
+
+local WasActive = false
+local LastQualityValue = nil
+
+task.spawn(function()
+    while task.wait(0.2) do
+        local CurrentText = QualityLabel.Text
+        local NumberText = string.match(CurrentText, "(%d+%.?%d*)%s*%%")
+        local QualityValue = tonumber(NumberText)
+
+        if QualityValue ~= nil then
+
+            if QualityValue > 0 then
+                WasActive = true
+            end
+
+            if QualityValue ~= LastQualityValue then
+                print("BANANAS V5 | Pan Quality:", QualityValue .. "%")
+                LastQualityValue = QualityValue
+            end
+
+            if QualityValue == 0 and WasActive then
+                print("BANANAS V5 | Shake selesai!")
+
+                WasActive = false
+            end
+        end
+    end
+end)
